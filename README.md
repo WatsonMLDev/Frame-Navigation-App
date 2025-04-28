@@ -81,12 +81,20 @@ Currently in **alpha stage**:
    flutter pub get
    ```
 
-3. **Configure Environment**
+3. **Configure Environment Variables**
+   Create a `.env` file in the project root:
+   ```
+   # Required for navigation
+   ACCESS_TOKEN=mapbox access token
+   ```
+   > Note: Never commit your `.env` file to version control
+
+4. **Configure Environment**
    - Enable location services
    - Grant Bluetooth permissions
    - Allow background location access
 
-4. **Run the Application**
+5. **Run the Application**
    ```bash
    flutter run
    ```
@@ -178,4 +186,3 @@ For support or queries:
 - Flutter community
 - Contributing developers
 - Testing team
-
