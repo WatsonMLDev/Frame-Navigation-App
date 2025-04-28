@@ -86,7 +86,7 @@ This project demonstrates the core concept but requires significant improvements
 1.  **Clone the Repository:**
     ```bash
     git clone <repository-url>
-    cd watsonmldev-frame-navigation-app
+    cd frame-navigation-app
     ```
 
 2.  **Install Dependencies:**
