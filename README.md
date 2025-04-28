@@ -33,10 +33,6 @@ This project demonstrates the core concept but requires significant improvements
 *   🔴 **Testing:** No automated tests included in the repository.
 *   🔴 **Optimization:** Location polling and BLE communication could be optimized for battery life.
 
-## 📸 Screenshots / Demo
-
-*(Optional: Add screenshots of the mobile app map view and potentially a photo/video of the Frame device displaying information here)*
-
 ## 🛠️ How It Works
 
 1.  **Setup:** The app loads a Mapbox Access Token from a `.env` file.
@@ -118,24 +114,6 @@ This project demonstrates the core concept but requires significant improvements
         flutter run
         ```
     *   The app should automatically attempt to scan and connect to the Frame device upon startup.
-
-## 📁 Project Structure
-Use code with caution.
-Markdown
-watsonmldev-frame-navigation-app/
-├── android/ # Android specific files
-├── assets/
-│ ├── frame_app.lua # Lua script running on the Frame device
-│ └── sf_airport_route.geojson # (Currently UNUSED) Sample route data
-├── lib/
-│ ├── main.dart # Main application entry point, BLE logic, tap handling
-│ └── widgets/
-│ └── get_and_display_route.dart # Map widget, Mapbox API calls, route display
-├── ios/ # iOS specific files (implied)
-├── memory-bank/ # Project context documents (ignore future plans)
-├── .env # Mapbox token (You need to create this)
-├── pubspec.yaml # Project dependencies and metadata
-└── README.md # This file
 
 ## ❗ Current Limitations & Known Issues
 
