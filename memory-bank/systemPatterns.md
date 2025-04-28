@@ -10,6 +10,7 @@ flowchart TD
         State --> Display[Display Management]
         State --> Navigation[Navigation System]
         State --> Location[Location Service]
+        Location --> Drift[Drift Detection]
     end
 
     subgraph Frame["Frame Device (Lua)"]
@@ -17,6 +18,7 @@ flowchart TD
         DataProc --> DisplayCtrl[Display Controller]
         DataProc --> IMU[IMU/Tap Handler]
         DataProc --> Battery[Battery Monitor]
+        DisplayCtrl --> BufferMgmt[Buffer Management]
     end
 
     Mobile <--> |Bluetooth| Frame
@@ -51,6 +53,8 @@ flowchart TD
         RC --> DD[Direction Determinator]
         PH --> BC[Bearing Calculator]
         PH --> SC[Speed Calculator]
+        PH --> DR[Drift Detection]
+        DR -->|Threshold Check| RC
     end
 
     subgraph NavigationState
@@ -77,6 +81,10 @@ flowchart TD
    - Two stream types:
      * locationStream: Single position updates
      * historyStream: List of recent positions
+   - Drift detection system
+     * Distance threshold calculation
+     * Route recalculation triggers
+     * Position validation
 
 2. **Direction Calculator**
    - Bearing calculation between points
@@ -84,6 +92,7 @@ flowchart TD
    - Relative angle computation
    - Turn instruction generation
    - Uses position history for smoother calculations
+   - Drift correction integration
 
 3. **Navigation State Management**
    - Route data management
@@ -91,6 +100,7 @@ flowchart TD
    - Navigation status handling
    - Frame display integration
    - Position history integration
+   - Recalculation state handling
 
 ## Core Components
 
@@ -104,10 +114,11 @@ flowchart TD
 ### 2. Frame Device (Lua)
 - Main app_loop with error handling
 - Message parser system
-- Display management
+- Enhanced display management with buffer control
 - IMU/tap detection
 - Battery monitoring
 - Progressive sprite rendering
+- Frame buffer synchronization
 
 ### 3. Display System
 **Mobile Side:**
@@ -115,13 +126,18 @@ flowchart TD
 - Sprite/image preparation
 - Clear screen control
 - State-based UI updates
+- Frame buffer management
+- Update synchronization control
+- Display state validation
 
 **Frame Side:**
-- Text rendering
-- Bitmap display
-- Sprite handling
-- Progressive rendering
+- Text rendering with buffer management
+- Bitmap display with sync
+- Sprite handling optimization
+- Progressive rendering with validation
 - Palette management
+- Frame rate control
+- Update timing management
 
 ### 4. User Input System
 ```mermaid
@@ -142,12 +158,15 @@ flowchart TD
         PH --> HS[History Stream]
         PH --> BC[Bearing Calculator]
         PH --> SC[Speed Calculator]
+        PH --> DD[Drift Detector]
+        DD -->|Threshold| RC[Route Calculator]
     end
 
     subgraph Consumers
         HS --> Navigation[Navigation System]
         BC --> Navigation
         SC --> Navigation
+        RC --> Navigation
         Navigation --> Display[Display Updates]
     end
 ```
@@ -155,43 +174,51 @@ flowchart TD
 ### 6. Navigation System
 - Image processing via OpenCV
 - Map interpretation
-- Route guidance
+- Route guidance with drift correction
 - Visual feedback through frame display
 - Position history integration for enhanced tracking
+- Route recalculation management
 
 ## Design Patterns
 
 1. **State Pattern**
    - Mobile: Application state management
    - Frame: Display state management
+   - Buffer: Display update management
 
 2. **Observer Pattern**
    - Tap event handling
    - Battery monitoring
    - Bluetooth data monitoring
    - Location tracking streams
+   - Drift detection events
 
 3. **Command Pattern**
    - Message passing system
    - Display operations
    - Navigation commands
+   - Buffer management commands
 
 4. **Queue Pattern**
    - Position history management
    - Limited size queue (5 positions)
    - FIFO operation
+   - Display buffer queue
 
 5. **Parser Pattern**
    - Message parsing system on frame
    - Data format handling
+   - Display update validation
 
 ## Error Handling
 - Mobile: Comprehensive logging system
 - Frame: pcall error containment
+- Display: Buffer overflow protection
 - Graceful degradation
 - Connection recovery
 - Resource cleanup
 - Location service error recovery
+- Display state recovery
 
 ## Data Flow
 ```mermaid
@@ -201,10 +228,12 @@ flowchart LR
     History --> Process[Processing]
     State --> Process
     Process --> Proto[Protocol Layer]
-    Proto --> Frame[Frame Display]
+    Proto --> Buffer[Display Buffer]
+    Buffer --> Frame[Frame Display]
     
     External[External Data] --> Process
     Battery[Battery Status] --> Proto
+    Drift[Drift Detection] --> Process
 ```
 
 ## Security Considerations
@@ -215,3 +244,4 @@ flowchart LR
 - Resource cleanup on disconnect
 - Progressive data handling
 - Position data privacy
+- Buffer overflow protection

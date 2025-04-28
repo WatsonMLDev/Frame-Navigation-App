@@ -3,21 +3,32 @@
 ## Purpose
 The nav_frame application serves as a navigation system that interfaces with specialized hardware devices called "frames". It bridges the gap between digital navigation data and physical frame devices through Bluetooth connectivity, offering enhanced navigation through position history tracking and advanced bearing calculations.
 
+## Current State
+- Alpha release stage - core functionality working
+- Basic navigation operational but needs enhancements
+- Display system functional but experiencing glitches
+- Drift detection system needed for improved accuracy
+- Display buffer management requires optimization
+
 ## Problem Space
 - Users need accurate and reliable navigation information through frame devices
 - Navigation data needs to be processed and displayed in a format compatible with frames
 - Real-time location tracking and history management is crucial for accurate guidance
 - Position data must be analyzed to provide meaningful navigation instructions
 - Real-time communication with frame devices needs to be reliable and responsive
+- Route drift detection and recalculation needed for accuracy
+- Display stability required for clear navigation
 
 ## User Experience Goals
 1. Simple and intuitive interaction through tap gestures
-2. Clear display of navigation information
+2. Clear and stable display of navigation information
 3. Real-time status updates (time, battery level)
 4. Seamless hardware connection management
 5. Accurate and stable navigation guidance
 6. Smooth direction updates based on movement history
 7. Battery-efficient operation
+8. Reliable route recalculation when needed
+9. Glitch-free display updates
 
 ## Core Functionality
 
@@ -26,6 +37,8 @@ The nav_frame application serves as a navigation system that interfaces with spe
    - Position history management (5 positions)
    - Bearing calculations between positions
    - Average speed computation
+   - Drift detection and correction
+   - Route recalculation triggers
    - Efficient resource usage
 
 2. **Frame Connection Management**
@@ -33,6 +46,8 @@ The nav_frame application serves as a navigation system that interfaces with spe
    - Connection establishment
    - Connection state management
    - Battery level monitoring
+   - Display buffer management
+   - Update synchronization
 
 3. **Navigation Features**
    - Enhanced route guidance using position history
@@ -41,6 +56,8 @@ The nav_frame application serves as a navigation system that interfaces with spe
    - Map interpretation
    - Image-based navigation cues
    - Turn-by-turn instructions
+   - Drift correction
+   - Route recalculation
 
 4. **User Interaction**
    - Single tap: Display time and battery
@@ -48,13 +65,17 @@ The nav_frame application serves as a navigation system that interfaces with spe
    - Multiple tap: Custom functionality
    - Gesture-based control
    - Responsive feedback
+   - Stable display updates
 
 5. **Display Management**
-   - Clear screen control
-   - Text display
-   - Image/sprite rendering
-   - Progressive rendering
+   - Clear screen control with buffer management
+   - Text display with sync
+   - Image/sprite rendering optimization
+   - Progressive rendering with timing control
    - Navigation instruction formatting
+   - Frame rate control
+   - Update synchronization
+   - Glitch prevention
 
 ## Target Users
 Primary users are individuals with frame devices who need:
@@ -65,6 +86,7 @@ Primary users are individuals with frame devices who need:
 - Battery-efficient operation
 - Clear movement feedback
 - Position tracking reliability
+- Stable display updates
 
 ## User Benefits
 
@@ -73,18 +95,23 @@ Primary users are individuals with frame devices who need:
 - Smoother navigation updates
 - Better handling of GPS fluctuations
 - Speed-aware instruction timing
+- Drift detection and correction
+- Automatic route recalculation
 
 ### Improved Reliability
 - Position history helps filter out GPS noise
 - More stable bearing calculations
 - Better handling of temporary GPS loss
 - Enhanced movement detection
+- Drift compensation
+- Display stability improvements
 
 ### Battery Efficiency
 - Optimized location tracking
 - Efficient position history management
 - Resource-conscious operation
 - Background location handling
+- Optimized display updates
 
 ## Product Differentiators
 1. Position history-based navigation
@@ -94,6 +121,8 @@ Primary users are individuals with frame devices who need:
 5. Resource-efficient tracking
 6. Frame-optimized display
 7. Simple gesture controls
+8. Drift detection and correction
+9. Stable display updates
 
 ## Success Indicators
 
@@ -103,6 +132,8 @@ Primary users are individuals with frame devices who need:
 - Responsive interaction
 - Long battery life
 - Reliable positioning
+- Stable display output
+- Effective drift correction
 
 ### Technical Performance
 - Consistent 1s update interval
@@ -110,6 +141,9 @@ Primary users are individuals with frame devices who need:
 - Efficient position history management
 - Stable frame connection
 - Minimal battery impact
+- Buffer management efficiency
+- Display update stability
+- Drift detection accuracy
 
 ### Navigation Quality
 - Accurate turn instructions
@@ -117,3 +151,5 @@ Primary users are individuals with frame devices who need:
 - Smooth direction changes
 - Stable position tracking
 - Clear visual feedback
+- Effective route recalculation
+- Consistent display performance

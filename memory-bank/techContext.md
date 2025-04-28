@@ -40,6 +40,8 @@ permission_handler: ^11.3.1 # Permission management
 - Average speed calculation
 - Permission handling
 - Resource management
+- Drift detection threshold calculations
+- Route recalculation triggers
 
 ### Stream Types
 1. **locationStream**
@@ -51,6 +53,8 @@ permission_handler: ^11.3.1 # Permission management
    - List of recent positions (max 5)
    - Enhanced tracking capabilities
    - Type: Stream<List<Position>>
+   - Used for drift detection
+   - Drift threshold calculations
 
 ### Position History
 - Queue-based implementation
@@ -61,6 +65,7 @@ permission_handler: ^11.3.1 # Permission management
   * Speed
   * Timestamp
   * Accuracy
+  * Drift metrics
 
 ## Frame Device Technical Specs
 
@@ -68,17 +73,30 @@ permission_handler: ^11.3.1 # Permission management
 - Bluetooth Low Energy (BLE)
 - Custom message protocol
 - Binary data transfer
+- Display buffer management
 
 ### Frame Hardware Features
 - Display capabilities
   - Text rendering
   - Bitmap display
   - Sprite rendering
+  - Buffer management
+  - Frame sync control
+  - Update timing control
 - IMU (Inertial Measurement Unit)
   - Tap detection
   - Motion sensing
 - Battery monitoring
 - Memory constraints (considered in progressive rendering)
+
+### Display System Enhancement
+- Buffer management system
+- Frame rate control
+- Update synchronization
+- Screen tearing prevention
+- Progressive rendering optimization
+- Memory-efficient updates
+- Display state validation
 
 ### Lua Runtime
 - Embedded Lua environment
@@ -88,6 +106,7 @@ permission_handler: ^11.3.1 # Permission management
   - code.min
   - image_sprite_block.min
   - plain_text.min
+  - display_buffer.min (new)
 
 ## Asset Management
 
@@ -99,6 +118,7 @@ packages/simple_frame_app/lua/
 ├── code.min.lua
 ├── plain_text.min.lua
 ├── camera.min.lua
+├── display_buffer.min.lua
 └── image_sprite_block.min.lua
 ```
 
@@ -123,6 +143,9 @@ assets/
    - Battery impact
    - Location polling frequency impact
    - Position history memory usage
+   - Display buffer management overhead
+   - Update synchronization timing
+   - Drift detection calculations
 
 ### Frame Device
 1. **Hardware Limitations**
@@ -130,11 +153,15 @@ assets/
    - Memory constraints
    - Battery life
    - Processing power
+   - Display update timing
+   - Buffer management capabilities
 
 2. **Communication Constraints**
    - BLE bandwidth
    - Message size limits
    - Connection stability
+   - Update synchronization
+   - Buffer transfer limitations
 
 ## Development Tools
 
@@ -144,12 +171,16 @@ assets/
 - Android/iOS development setup
 - Bluetooth debugging tools
 - Location testing tools
+- Display debugging tools
+- Frame buffer analyzer
 
 ### Optional
 - OpenCV development tools
 - Lua development environment
 - Image processing tools
 - GPS simulation tools
+- Display timing analyzer
+- Buffer management tools
 
 ## Testing Requirements
 
@@ -160,12 +191,18 @@ assets/
 - Image processing verification
 - Location service tests
 - Position history management tests
+- Drift detection validation
+- Display system verification
+- Buffer management tests
 
 ### Frame Device Testing
 - Lua script verification
 - Display rendering tests
+- Buffer management tests
 - Input handling verification
 - Battery management tests
+- Update timing validation
+- Frame synchronization tests
 
 ### Location Service Testing
 - Position accuracy verification
@@ -173,3 +210,14 @@ assets/
 - Stream behavior verification
 - Permission handling tests
 - Resource cleanup verification
+- Drift detection accuracy
+- Recalculation trigger validation
+
+### Display System Testing
+- Buffer management validation
+- Update timing verification
+- Frame synchronization tests
+- Memory usage monitoring
+- Performance profiling
+- Glitch detection
+- State validation

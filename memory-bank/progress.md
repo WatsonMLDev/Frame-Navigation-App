@@ -1,5 +1,11 @@
 # Progress: nav_frame
 
+## Current State
+- Alpha release reached - app technically functional but needs refinements
+- Core navigation features working but require stability improvements
+- Display system functional but experiencing glitches
+- Navigation tracking operational but needs drift handling
+
 ## Completed Features
 
 ### Core Infrastructure
@@ -21,6 +27,7 @@
 - [x] Simple sprite support
 - [x] Progressive rendering framework
 - [x] Display state management
+- [ ] Stable display updates (experiencing glitches)
 
 ### User Interaction
 - [x] Single tap handler (time/battery)
@@ -35,80 +42,96 @@
 - [x] Average speed calculation
 - [x] Location permission handling
 - [x] Basic location streaming
+- [ ] Drift detection and recalculation
 
 ## In Progress
 
 ### Navigation System
-- [x] Navigation tracking prototype (simulate_nav.py)
+- [x] Navigation tracking prototype
 - [x] Real-time location polling service
-- [x] Direction calculation system integration
+- [x] Direction calculation system
 - [x] Route progress tracking with TomTom API
 - [x] Road snapping implementation
 - [x] Progress visualization in UI
 - [x] Progress display on frame
 - [x] Navigation instruction handling
+- [ ] Drift detection implementation
+- [ ] Route recalculation logic
 
-### Display Enhancements
-- [ ] Complex visual feedback
-- [ ] Advanced sprite handling
-- [ ] Dynamic screen updates
-- [ ] Navigation UI elements
+### Display Enhancement (Priority)
+- [ ] Fix frame glitches
+- [ ] Optimize update timing
+- [ ] Improve buffer management
+- [ ] Add frame synchronization
+- [ ] Enhance update efficiency
 
 ### Performance Optimization
 - [ ] Battery usage optimization
 - [ ] Bluetooth communication efficiency
 - [ ] Image processing performance
 - [ ] Memory management
+- [ ] Display system efficiency
 
 ## Known Issues
 
+### Critical Priority
+1. Frame display glitches during certain operations
+2. Missing drift detection and recalculation
+3. Display update timing issues
+4. Screen artifacts in certain scenarios
+
 ### High Priority
-1. Test route progress tracking accuracy
-2. Optimize road snapping performance
-3. Improve navigation instruction clarity
-4. Enhance frame display updates for navigation
+1. Navigation accuracy optimization
+2. Route progress tracking improvements
+3. Display system architecture review
+4. Update synchronization
 
 ### Medium Priority
-1. Display optimization needed
-2. Battery consumption optimization
-3. Documentation gaps
-
-### Low Priority
-1. Code cleanup needed
-2. Performance profiling needed
-3. Asset optimization needed
+1. Battery consumption optimization
+2. Documentation gaps
+3. Performance profiling
+4. Error handling improvements
 
 ## Recent Changes
-1. Implemented route progress tracking with TomTom API
-2. Added road snapping functionality
-3. Created progress visualization in UI
-4. Updated double tap handler for progress display
-5. Added route progress display on frame
-6. Integrated navigation instruction handling
+1. Reached alpha state - basic functionality working
+2. Implemented core navigation features
+3. Added route progress tracking
+4. Integrated basic display system
+5. Implemented position history tracking
 
 ## Next Steps Roadmap
 
 ### Immediate (Sprint 1)
-- [ ] Test route progress accuracy
-- [ ] Verify road snapping precision
-- [ ] Test navigation instructions
-- [ ] Optimize progress updates
+- [ ] Implement drift detection system
+  * Add distance threshold calculation
+  * Create recalculation triggers
+  * Test drift correction accuracy
+
+- [ ] Resolve display issues
+  * Fix frame glitches
+  * Optimize update timing
+  * Implement better buffer management
 
 ### Short Term (Sprint 2-3)
-- [ ] Enhance display system with position history data
-- [ ] Optimize battery usage
-- [ ] Improve user interaction
-- [ ] Add basic testing
-- [ ] Implement advanced navigation features using position history
+- [ ] Enhance navigation system
+  * Add smart recalculation
+  * Optimize position history usage
+  * Improve update efficiency
+
+- [ ] Optimize display system
+  * Rework display logic
+  * Add frame synchronization
+  * Enhance render timing
 
 ### Medium Term (Sprint 4-6)
-- [ ] Advanced navigation features
-- [ ] Performance optimization
-- [ ] Extended testing coverage
-- [ ] Documentation improvement
+- [ ] System optimization
+  * Improve battery efficiency
+  * Optimize memory usage
+  * Enhance performance
+  * Refine error handling
 
 ### Long Term
-- [ ] Additional gesture support
-- [ ] Advanced map features
-- [ ] Machine learning integration
-- [ ] Analytics system
+- [ ] Add advanced features
+- [ ] Implement analytics
+- [ ] Expand testing coverage
+- [ ] Enhance documentation
